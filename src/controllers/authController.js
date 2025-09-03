@@ -41,6 +41,13 @@ export const register = async(req,res)=>{
 
 
 export const login = async(req,res)=>{
+    console.log("We are in login controller",req.user);
+    res.status(200).json({
+        success:true,
+        message:"User logged in successfully",
+        username:req.user.username,
+        isMfaActivate:req.user.isMfaActivate
+    });
 
 }
 
