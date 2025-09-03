@@ -11,10 +11,10 @@ router.post("/register", register);
 router.post("/login",passport.authenticate("local"), login);
 
 //Auth status route
-router.post("/status", authStatus);
+router.get("/status", authStatus);
 
 //Logout Route
-router.post("/logout", logout);
+router.get("/logout", logout);
 
 
 //setup 2FA
