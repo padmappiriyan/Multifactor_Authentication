@@ -8,7 +8,7 @@ const router = express.Router();
 router.post("/register", register);
 
 //Login Route
-router.post("/login", login);
+router.post("/login",passport.authenticate("local"), login);
 
 //Auth status route
 router.post("/status", authStatus);
