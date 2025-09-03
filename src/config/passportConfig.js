@@ -6,7 +6,7 @@ import { Strategy as LocalStrategy } from "passport-local";
 const passportConfig = ()=>{
     passport.use(new LocalStrategy(
 
-  async(username, password, done)=> {
+    async(username, password, done)=> {
     try{
       const user =await User.findOne({username});
       if(!user){
@@ -28,8 +28,10 @@ const passportConfig = ()=>{
 
 passport.serializeUser((user,done)=>{
     console.log("We are in serializeUser");
+    console.log(user);
     done(null,user._id);
 });
+
 
 passport.deserializeUser(async(_id,done)=>{      
     
