@@ -29,6 +29,7 @@ const passportConfig = ()=>{
 passport.serializeUser((user,done)=>{
     console.log("We are in serializeUser");
     console.log(user);
+    console.log(done);
     done(null,user._id);
 });
 
