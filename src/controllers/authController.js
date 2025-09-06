@@ -110,7 +110,7 @@ export const setup2FA =async (req,res)=>{
             issuer:"www.piriyan.com",
             encoding:"base32"
       })
-      //pass this url to qrcode so that it can genrate qrcode image
+      
      const qrImageurl=await qrCode.toDataURL(url);
      res.status(200).json({
         success:true,
