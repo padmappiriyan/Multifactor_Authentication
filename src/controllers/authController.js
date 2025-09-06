@@ -129,7 +129,7 @@ export const setup2FA =async (req,res)=>{
 
 
 export const verify2FA = async(req,res)=>{
-    const {token} = req.query;
+    const {token} = req.body;
     const user = req.user;
     const verified= speakeasy.totp.verify({
         secret:user.twoFactorSecret,
