@@ -29,7 +29,7 @@ router.post("/2fa/setup",(req,res,next)=>{
 
 
 //2fa verify route
-router.get("/2fa/verify",(req,res,next)=>{
+router.post("/2fa/verify",(req,res,next)=>{
     if(req.isAuthenticated()) return next();
     return res.status(401).json({
         success:false,
