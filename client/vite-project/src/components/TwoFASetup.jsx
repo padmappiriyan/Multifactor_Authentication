@@ -1,5 +1,3 @@
-
-
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { setup2FA } from '../service/authApi.js';
@@ -49,7 +47,7 @@ const TwoFASetup = ({onSetupComplete}) => {
         </div>
         <div className='mb-6'>
             {message && <p className='text-green-600 text-sm mb-3  '>{message}</p> }
-            <input readOnly  defaultValue="" value={respose.secret} className='w-full border rounded mt-2 text-xs text-gray-600 p-4  '
+            <input readOnly  defaultValue="" value={respose.secret}  className='w-full border rounded mt-2 text-xs text-gray-600 p-4  '
            onClick={copyClipBoard} />
         </div>
         <button className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-200"
