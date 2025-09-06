@@ -39,7 +39,6 @@ app.use(json({
 passportConfig();
 app.use("/api/auth",authRoutes);
 
-//built-in middlewares
 
 
 
