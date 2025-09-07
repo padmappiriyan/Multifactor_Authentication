@@ -73,27 +73,53 @@ export const  authStatus= async(req,res)=>{
 
 }
 
-
-export const logout = async(req,res)=>{
-     if(!req.user){
-        return res.status(400).json({       
-            success:false,
-             message:"Unauthorized user"
-     })
+export const logout = async (req, res) => {
+  try {
+    if (!req.user) {
+      return res.status(400).json({
+        success: false,
+        message: "Unauthorized user"
+      });
     }
-     req.logout((err)=>{
-        if(err){
-            return res.status(500).json({
-                success:false,
-                message:"User not logged in"
-            })
-        }
-        res.status(200).json({
-            success:true,
-            message:"User logged out successfully"
-        })   
-});
-}
+    req.user.isMfaActivate = false;
+    req.user.twoFactorSecret = "";
+    await req.user.save();
+
+  
+    await new Promise((resolve, reject) => {
+      req.logout(err => {
+        if (err) reject(err);
+        else resolve();
+      });
+    });
+
+    
+    await new Promise((resolve, reject) => {
+      req.session.destroy(err => {
+        if (err) reject(err);
+        else resolve();
+      });
+    });
+
+    
+    res.clearCookie("connect.sid");
+
+    return res.status(200).json({
+      success: true,
+      message: "User logged out successfully & MFA disabled"
+    });
+
+  } catch (error) {
+    console.error("Logout error:", error);
+    return res.status(500).json({
+      success: false,
+      message: "Error logging out",
+      error: error.message
+    });
+  }
+};
+
+ 
 
 export const setup2FA =async (req,res)=>{
       try{
