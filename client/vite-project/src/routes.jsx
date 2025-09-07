@@ -5,6 +5,8 @@ import HomePage from "./pages/HomePage.jsx";
 import Setup2FA from "./pages/Setup2FA.jsx";
 import Verify2FA from "./pages/Verify2FA.jsx";
 import ProtectedRoute from "./components/ProtectedRoute.jsx";
+import About from "./pages/About.jsx";
+import Contact from "./pages/Contact.jsx";
 
 const router =createBrowserRouter([
     {
@@ -28,6 +30,16 @@ const router =createBrowserRouter([
     {
         path:"/verify-2fa",
         element:<Verify2FA/>,
+        errorElement:<Error/>
+    },
+    {
+        path:"/About",
+        element:<About/>,
+        errorElement:<Error/>
+    },
+    {
+        path:"/Contact",
+        element:<Contact/>,
         errorElement:<Error/>
     }
     ]
