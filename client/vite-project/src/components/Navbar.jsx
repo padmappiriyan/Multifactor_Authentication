@@ -65,7 +65,23 @@ const Navbar = () => {
 
         
         <div className="flex items-center space-x-8">
-          {isLoggedIn && <MdOutlineManageAccounts className='w-7 h-7 cursor-pointer' />}
+         <div className='relative text-center inline-block '>
+            <div className='group'>
+                 <button className="flex items-center p-2 rounded-full hover:bg-gray-100">
+                    {isLoggedIn && <MdOutlineManageAccounts className='w-7 h-7 cursor-pointer hover:text-blue-600' />}
+                 </button>
+            <div className="absolute left-1/2 transform -translate-x-1/2 mt-2 w-40 bg-white border rounded-lg shadow-lg 
+                   opacity-0 group-hover:opacity-100 group-hover:translate-y-0 translate-y-2 
+                   transition-all duration-200 pointer-events-none group-hover:pointer-events-auto">
+         <ul className="py-2">
+            <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">My Orders</li>
+            <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Settings</li>
+            <li className="px-4 py-2 hover:bg-gray-100 cursor-pointer">Logout</li>
+        </ul>
+            </div>
+        </div>
+        </div>
+          
           <FaShoppingCart className="text-xl cursor-pointer" />
           <button
             type="button"
