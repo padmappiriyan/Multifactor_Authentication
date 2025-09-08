@@ -2,10 +2,14 @@ import React from 'react'
 import { RouterProvider } from 'react-router-dom'
 import router from './routes'
 import { SessionProvider } from './context/SessionContext'
+import Navbar from './components/Navbar'
+
 const App = () => {
   return (
     <div className='bg-slate-900 h-screen'>
+     
       <div className='flex justify-center items-center h-screen'>
+       
         <SessionProvider>
           <RouterProvider router={router} />
         </SessionProvider>
